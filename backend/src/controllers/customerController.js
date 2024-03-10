@@ -16,6 +16,7 @@ const getAllCustomer = async (req, res, next) => {
     next();
 };
 
+// Find One Customer
 const getOneCustomer = async (req, res, next) => {
     const {id} = req.params;
 
@@ -36,10 +37,12 @@ const getOneCustomer = async (req, res, next) => {
 const postCustomer =  async (req, res, next) => {
     try{
         // Input
-        // const {name, email, city} = req.body
-        // if (!name || !email || !city) {
+        // const {customer_name, email, city} = req.body
+        // if (!customer_name || !email || !city) {
         //     throw new Error('All fields required');
         // }
+
+
         const customer_name = faker.person.fullName();
         const email = faker.internet.email();
         const city = faker.location.city();
@@ -64,8 +67,6 @@ const postCustomer =  async (req, res, next) => {
 // PUT - Edit a customer
 const putCustomer = async (req, res, next) => {
     const {id} = req.params;
-    // Input
-        // const {name, email, city} = req.body
 
     try{
         const updateCustomer = await prisma.customer.update({
@@ -104,9 +105,6 @@ const deleteCustomer = async (req, res, next) => {
 
     next();
 };
-
-
-
 
 module.exports = {
     getAllCustomer,

@@ -27,7 +27,7 @@ const getAllOrder = async (req, res, next) => {
     next();
 };
 
-// GET One Order
+// Find One Order
 const getOneOrder = async(req, res, next) => {
     const {id} = req.params;
 
@@ -51,6 +51,12 @@ const getOneOrder = async(req, res, next) => {
 // POST a new Order
 const postOrder = async (req, res, next) => {
     const {customer_id} = req.body;
+
+    // Input
+        // const {order_name, total_amount} = req.body
+        // if (!order_name || !total_amount) {
+        //     throw new Error('All fields required');
+        // }
 
     const order_name = faker.vehicle.vehicle();
     const total_amount = faker.number.int({min:1,max:5});
